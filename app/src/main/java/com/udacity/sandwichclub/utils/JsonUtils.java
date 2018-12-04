@@ -28,33 +28,95 @@ public class JsonUtils {
 
     private JsonUtils(){}
 
-    public class ArrayList<Sandwich> parseSandwichJson(){
-
-        ArrayList<Sandwich> sandwiches = new ArrayList<>();
+    public static Sandwich parseSandwichJson(String json) {
 
         try {
-            JSONObject baseJsonParse = new JSONObject(JSON_PARSE);
-            JSONArray sandwichArray = baseJsonParse.getJSONArray("sandwich_details");
+            JSONObject baseJsonParse = new JSONObject(json);
 
-            for (int i = 0; i<sandiwchArray.length(); i++){
-                JSONObject currentSandwich = sandwichArray.getJSONObject(i);
-                JSONObject details = currentSandwich.getJSONObject("details");
-                String mainName = details.getString("mainName");
-                String alsoKnownAs = details.getString("alsoKnownAs");
-                String placeOfOrigin = details.getString("alsoKnownAs");
-                String description = details.getString("description");
-                String image = details.getString("image");
-                String ingredients = details.getString("ingredients");
+            JSONObject object1 = baseJsonParse.getJSONObject("name");
+            JSONObject mainName1 = object1.getJSONObject("mainName");
+            JSONArray alsoKnownAs1 = object1.getJSONArray("alsoKnownAs");
+            JSONObject placeOfOrigin1 = object1.getJSONObject("placeOfOrigin");
+            JSONObject description1 = object1.getJSONObject("description");
+            JSONObject image1 = object1.getJSONObject("image");
+            JSONArray ingredients1 = object1.getJSONArray("ingredients");
+            
+            JSONObject object2 = baseJsonParse.getJSONObject("name");
+            JSONObject mainName2 = object2.getJSONObject("mainName");
+            JSONArray alsoKnownAs2 = object2.getJSONArray("alsoKnownAs");
+            JSONObject placeOfOrigin2 = object2.getJSONObject("placeOfOrigin");
+            JSONObject description2 = object2.getJSONObject("description");
+            JSONObject image2 = object2.getJSONObject("image");
+            JSONArray ingredients2 = object2.getJSONArray("ingredients");
 
-                Sandwich sandwich = new Sandwich(mainName, alsoKnownAs, placeOfOrigin, description, image, ingredients);
-                sandwiches.add(sandwich);
-            }
+            JSONObject object3 = baseJsonParse.getJSONObject("name");
+            JSONObject mainName3 = object3.getJSONObject("mainName");
+            JSONArray alsoKnownAs3 = object3.getJSONArray("alsoKnownAs");
+            JSONObject placeOfOrigin3 = object3.getJSONObject("placeOfOrigin");
+            JSONObject description3 = object3.getJSONObject("description");
+            JSONObject image3 = object3.getJSONObject("image");
+            JSONArray ingredients3 = object3.getJSONArray("ingredients");
 
-        }catch (JSONException e) {
-            // If an error is thrown when executing any of the above statements in the "try" block,
-            // catch the exception here, so the app doesn't crash. Print a log message
-            // with the message from the exception.
-            Log.e("QueryUtils", "Problem parsing the earthquake JSON results", e);
+            JSONObject object4 = baseJsonParse.getJSONObject("name");
+            JSONObject mainName4 = object4.getJSONObject("mainName");
+            JSONArray alsoKnownAs4 = object4.getJSONArray("alsoKnownAs");
+            JSONObject placeOfOrigin4 = object4.getJSONObject("placeOfOrigin");
+            JSONObject description4 = object4.getJSONObject("description");
+            JSONObject image4 = object4.getJSONObject("image");
+            JSONArray ingredients4 = object4.getJSONArray("ingredients");
+
+            JSONObject object5 = baseJsonParse.getJSONObject("name");
+            JSONObject mainName5 = object5.getJSONObject("mainName");
+            JSONArray alsoKnownAs5 = object5.getJSONArray("alsoKnownAs");
+            JSONObject placeOfOrigin5 = object5.getJSONObject("placeOfOrigin");
+            JSONObject description5 = object5.getJSONObject("description");
+            JSONObject image5 = object5.getJSONObject("image");
+            JSONArray ingredients5 = object5.getJSONArray("ingredients");
+
+            JSONObject object6 = baseJsonParse.getJSONObject("name");
+            JSONObject mainName6 = object6.getJSONObject("mainName");
+            JSONArray alsoKnownAs6 = object6.getJSONArray("alsoKnownAs");
+            JSONObject placeOfOrigin6 = object6.getJSONObject("placeOfOrigin");
+            JSONObject description6 = object6.getJSONObject("description");
+            JSONObject image6 = object6.getJSONObject("image");
+            JSONArray ingredients6 = object6.getJSONArray("ingredients");
+
+            JSONObject object7 = baseJsonParse.getJSONObject("name");
+            JSONObject mainName7 = object7.getJSONObject("mainName");
+            JSONArray alsoKnownAs7 = object7.getJSONArray("alsoKnownAs");
+            JSONObject placeOfOrigin7 = object7.getJSONObject("placeOfOrigin");
+            JSONObject description7 = object7.getJSONObject("description");
+            JSONObject image7 = object7.getJSONObject("image");
+            JSONArray ingredients7 = object7.getJSONArray("ingredients");
+
+            JSONObject object8 = baseJsonParse.getJSONObject("name");
+            JSONObject mainName8 = object8.getJSONObject("mainName");
+            JSONArray alsoKnownAs8 = object8.getJSONArray("alsoKnownAs");
+            JSONObject placeOfOrigin8 = object8.getJSONObject("placeOfOrigin");
+            JSONObject description8 = object8.getJSONObject("description");
+            JSONObject image8 = object8.getJSONObject("image");
+            JSONArray ingredients8 = object8.getJSONArray("ingredients");
+
+            JSONObject object9 = baseJsonParse.getJSONObject("name");
+            JSONObject mainName9 = object9.getJSONObject("mainName");
+            JSONArray alsoKnownAs9 = object9.getJSONArray("alsoKnownAs");
+            JSONObject placeOfOrigin9 = object9.getJSONObject("placeOfOrigin");
+            JSONObject description9 = object9.getJSONObject("description");
+            JSONObject image9 = object9.getJSONObject("image");
+            JSONArray ingredients9 = object9.getJSONArray("ingredients");
+
+            JSONObject object10 = baseJsonParse.getJSONObject("name");
+            JSONObject mainName10 = object10.getJSONObject("mainName");
+            JSONArray alsoKnownAs10 = object10.getJSONArray("alsoKnownAs");
+            JSONObject placeOfOrigin10 = object10.getJSONObject("placeOfOrigin");
+            JSONObject description10 = object10.getJSONObject("description");
+            JSONObject image10 = object10.getJSONObject("image");
+            JSONArray ingredients10 = object10.getJSONArray("ingredients");
+
+        } catch (JSONException e) {
+            Log.e("JsonUtils", "Problem parsing the earthquake JSON results", e);
         }
+
+    }
 
 }
