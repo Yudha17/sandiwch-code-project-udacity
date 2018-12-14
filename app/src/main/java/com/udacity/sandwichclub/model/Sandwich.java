@@ -1,23 +1,20 @@
 package com.udacity.sandwichclub.model;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sandwich {
 
-    private String mainName;
-    private List<alsoKnownAs> alsoKnownAsList;
-    private String placeOfOrigin;
-    private String description;
-    private String image;
-    private List<ingredients> ingredientsList;
+     String mainName;
+     List<String> alsoKnownAsList = new ArrayList<>();
+     String placeOfOrigin;
+     String description;
+     String image;
+     List<String> ingredientsList = new ArrayList<>();
 
-    public Sandwich(List<alsoKnownAs> alsoKnownAsList, String placeOfOrigin, String description, String image, List<ingredients> ingredientsList) {
+    public Sandwich() {
 
-        this.alsoKnownAsList = alsoKnownAsList;
-        this.placeOfOrigin = placeOfOrigin;
-        this.description = description;
-        this.image = image;
-        this.ingredientsList = ingredientsList;
     }
 
     public String getMainName() {
@@ -28,11 +25,11 @@ public class Sandwich {
         this.mainName = mainName;
     }
 
-    public List<alsoKnownAs> getAlsoKnownAsList() {
+    public List<String> getAlsoKnownAsList() {
         return alsoKnownAsList;
     }
 
-    public void setAlsoKnownAsList(List<alsoKnownAs> alsoKnownAsList) {
+    public void setAlsoKnownAsList(ArrayList<String> alsoKnownAsList) {
         this.alsoKnownAsList = alsoKnownAsList;
     }
 
@@ -60,39 +57,22 @@ public class Sandwich {
         this.image = image;
     }
 
-    public List<ingredients> getIngredientsList() {
+    public List<String> getIngredientsList() {
         return ingredientsList;
     }
 
-    public void setIngredientsList(List<ingredients> ingredientsList) {
+    public void setIngredientsList(ArrayList<String> ingredientsList) {
         this.ingredientsList = ingredientsList;
     }
 
-    public static final class alsoKnownAs {
-        private String alsoKnownAs;
-
-        public String getAlsoKnownAs() {
-            return alsoKnownAs;
-        }
-
-        public void setAlsoKnownAs(String alsoKnownAs) {
-            this.alsoKnownAs = alsoKnownAs;
-        }
+    public Sandwich(String mainName, ArrayList<String> alsoKnownAsList, String placeOfOrigin, String description, String image, ArrayList<String> ingredientsList) {
+        this.mainName = mainName;
+        this.alsoKnownAsList = alsoKnownAsList;
+        this.placeOfOrigin = placeOfOrigin;
+        this.description = description;
+        this.image = image;
+        this.ingredientsList = ingredientsList;
     }
-    public static final class ingredients {
-        private String ingredients;
-
-        public String getIngredients() {
-            return ingredients;
-        }
-
-        public void setIngredients(String ingredients) {
-            this.ingredients = ingredients;
-        }
-    }
-
-
-
 
     }
 

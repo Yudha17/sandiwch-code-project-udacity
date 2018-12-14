@@ -9,10 +9,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/main_name_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/detail_main_name_label"
+            android:textStyle="bold" />
+
         <ImageView
             android:id="@+id/image_iv"
             android:layout_width="match_parent"
-            android:layout_height="202dp"
+            android:layout_height="157dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/sandwich_picture_content_description"
             android:scaleType="centerCrop" />
@@ -31,6 +41,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/image_iv"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="158dp"
             android:layout_toRightOf="@+id/also_known_as"
             android:padding="10dp" />
 
@@ -38,7 +51,8 @@
             android:id="@+id/ingredients_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/also_known_as"
+            android:layout_below="@+id/place_of_origin"
+            android:layout_marginTop="0dp"
             android:padding="10dp"
             android:text="@string/detail_ingredients_label"
             android:textStyle="bold" />
@@ -47,7 +61,7 @@
             android:id="@+id/ingredients_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/also_known_tv"
+            android:layout_below="@id/place_origin_tv"
             android:layout_toRightOf="@id/ingredients_label"
             android:padding="10dp" />
 
@@ -55,16 +69,17 @@
             android:id="@+id/place_of_origin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ingredients_label"
+            android:layout_below="@+id/also_known_as"
+            android:layout_marginTop="0dp"
             android:padding="10dp"
             android:text="@string/detail_place_of_origin_label"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/origin_tv"
+            android:id="@+id/place_origin_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ingredients_tv"
+            android:layout_below="@id/also_known_tv"
             android:layout_toRightOf="@+id/place_of_origin"
             android:padding="10dp" />
 
@@ -72,7 +87,8 @@
             android:id="@+id/description_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/place_of_origin"
+            android:layout_below="@+id/ingredients_label"
+            android:layout_marginTop="0dp"
             android:padding="10dp"
             android:text="@string/detail_description_label"
             android:textStyle="bold" />
@@ -81,9 +97,9 @@
             android:id="@+id/description_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/origin_tv"
+            android:layout_below="@id/ingredients_tv"
             android:layout_toRightOf="@+id/description_label"
-            android:padding="10dp"/>
+            android:padding="10dp" />
 
     </RelativeLayout>
 
