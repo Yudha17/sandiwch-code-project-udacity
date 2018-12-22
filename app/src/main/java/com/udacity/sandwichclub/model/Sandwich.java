@@ -1,17 +1,18 @@
 package com.udacity.sandwichclub.model;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Sandwich {
 
+    ArrayList<Sandwich> sandwiches;
+
      String mainName;
-     List<String> alsoKnownAsList = new ArrayList<>();
+     List<String> alsoKnownAsList;
      String placeOfOrigin;
      String description;
      String image;
-     List<String> ingredientsList = new ArrayList<>();
+     List<String> ingredientsList;
 
     public Sandwich() {
 
@@ -29,7 +30,7 @@ public class Sandwich {
         return alsoKnownAsList;
     }
 
-    public void setAlsoKnownAsList(ArrayList<String> alsoKnownAsList) {
+    public void setAlsoKnownAsList(List<String> alsoKnownAsList) {
         this.alsoKnownAsList = alsoKnownAsList;
     }
 
@@ -49,9 +50,7 @@ public class Sandwich {
         this.description = description;
     }
 
-    public String getImage() {
-        return image;
-    }
+    public String getImage() {return image;}
 
     public void setImage(String image) {
         this.image = image;
@@ -61,11 +60,11 @@ public class Sandwich {
         return ingredientsList;
     }
 
-    public void setIngredientsList(ArrayList<String> ingredientsList) {
+    public void setIngredientsList(List<String> ingredientsList) {
         this.ingredientsList = ingredientsList;
     }
 
-    public Sandwich(String mainName, ArrayList<String> alsoKnownAsList, String placeOfOrigin, String description, String image, ArrayList<String> ingredientsList) {
+    public Sandwich(String mainName, List<String> alsoKnownAsList, String placeOfOrigin, String description, String image, List<String> ingredientsList) {
         this.mainName = mainName;
         this.alsoKnownAsList = alsoKnownAsList;
         this.placeOfOrigin = placeOfOrigin;

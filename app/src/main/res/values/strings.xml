@@ -13,6 +13,8 @@
 
     <!-- Error messages-->
     <string name="detail_error_message">Sandwich data not available</string>
+    <string name="detail_error_url">URL image not available</string>
+
 
     <string-array name="sandwich_names">
         <item>Ham and cheese sandwich</item>

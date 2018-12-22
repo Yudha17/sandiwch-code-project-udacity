@@ -1,11 +1,12 @@
 package com.udacity.sandwichclub;
 
+import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.os.AsyncTask;
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
+import android.support.v7.widget.Toolbar;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,34 +15,35 @@ import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
+
 import java.util.ArrayList;
+
 
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
-//    String requestURl;
-    TextView mainNameTv, alsoKnownAsTv, ingredientsTv, placeOfOriginTv, descriptionTv;
-    ImageView imageIv;
-    Sandwich sandwich;
+
+
+    Toolbar toolbar;
     String json;
+    Context context = DetailActivity.this;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        toolbar = findViewById(R.id.toolbar);
 
 
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+            toolbar.setTitle(bundle.getString("Title"));
+        }
 
-        Intent intent = getIntent();
+        Intent intent = this.getIntent();
         if (intent == null) {
             closeOnError();
         }
@@ -53,51 +55,35 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
-//        Resources resources = Resources.getSystem();
-//        InputStream inputStreamReader = resources.openRawResource(R.raw.sandwiches);
-//        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStreamReader));
-//        String[] sandwiches = getResources().getStringArray(R.array.sandwich_details);
-//        String json = sandwiches[position];
-        ArrayList sandwichList = JsonUtils.fetchEarthquakeData(json);
+        ArrayList<Sandwich> sandwiches = JsonUtils.parseSandwichJson(json);
 
-        if (sandwichList == null) {
-            // Sandwich data unavailable
-            closeOnError();
-            return;
-        }
+        Sandwich sandwich = sandwiches.get(position);
 
-        mainNameTv = (TextView) findViewById(R.id.main_name_iv);
-        alsoKnownAsTv = (TextView) findViewById(R.id.also_known_tv);
-        ingredientsTv = (TextView) findViewById(R.id.ingredients_tv);
-        placeOfOriginTv = (TextView) findViewById(R.id.place_origin_tv);
-        descriptionTv = (TextView) findViewById(R.id.description_tv);
-        imageIv = (ImageView) findViewById(R.id.image_iv);
 
-        sandwich = new Sandwich();
+        TextView alsoKnownAsTV = (TextView) findViewById(R.id.also_known_tv);
+        final String alsoKnownAsSt = sandwich.getAlsoKnownAsList().toString();
+        alsoKnownAsTV.setText(alsoKnownAsSt);
 
-        mainNameTv.setText(sandwich.getMainName());
-        alsoKnownAsTv.setText(sandwich.getAlsoKnownAsList().toString());
-        placeOfOriginTv.setText(sandwich.getPlaceOfOrigin());
-        descriptionTv.setText(sandwich.getDescription());
-        ingredientsTv.setText(sandwich.getIngredientsList().toString());
-        Picasso.with(this).load(sandwich.getImage()).into(imageIv);
+        TextView ingredientsTV = (TextView) findViewById(R.id.ingredients_tv);
+        final String ingredientsSt = sandwich.getIngredientsList().toString();
+        ingredientsTV.setText(ingredientsSt);
 
-//        populateUI();
-//        Picasso.with(this)
-//                .load(sandwich.getImage())
-//                .into(ingredientsIv);
-//
-//        setTitle(Sandwich.getMainName());
+        TextView placeOfOriginTV = (TextView) findViewById(R.id.place_origin_tv);
+        final String placeOfOriginSt = sandwich.getPlaceOfOrigin();
+        placeOfOriginTV.setText(placeOfOriginSt);
+
+        TextView descriptionTV = (TextView) findViewById(R.id.description_tv);
+        final String descriptionSt = sandwich.getDescription();
+        descriptionTV.setText(descriptionSt);
+
+        ImageView imageIV = (ImageView) findViewById(R.id.image_iv);
+        final String imageSt = sandwich.getImage();
+        Picasso.with(context).load(imageSt).into(imageIV);
+
     }
 
     private void closeOnError() {
         finish();
         Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
     }
-
-    public void populateUI() {
-
-    }
-
-
 }
