@@ -5,14 +5,12 @@ import java.util.List;
 
 public class Sandwich {
 
-    ArrayList<Sandwich> sandwiches;
-
-     String mainName;
-     List<String> alsoKnownAsList;
-     String placeOfOrigin;
-     String description;
-     String image;
-     List<String> ingredientsList;
+     private String mainName;
+     private List<String> alsoKnownAsList;
+     private String placeOfOrigin;
+     private String description;
+     private String image;
+     private List<String> ingredientsList;
 
     public Sandwich() {
 

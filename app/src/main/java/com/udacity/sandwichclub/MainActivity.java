@@ -29,57 +29,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(getResources().getString(R.string.app_name));
 
-        ArrayList<Sandwich> sandwiches = JsonUtils.parseSandwichJson(json);
+        String[] sandwiches = getResources().getStringArray(R.array.sandwich_names);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, sandwiches);
 
-        final ArrayList<String> sandwichList = new ArrayList<>();
-        Sandwich sandwich0 = sandwiches.get(0);
-        sandwichList.add(sandwich0.getMainName());
 
-        Sandwich sandwich1 = sandwiches.get(1);
-        sandwichList.add(sandwich1.getMainName());
-
-        Sandwich sandwich2 = sandwiches.get(2);
-        sandwichList.add(sandwich2.getMainName());
-
-        Sandwich sandwich3 = sandwiches.get(3);
-        sandwichList.add(sandwich3.getMainName());
-
-        Sandwich sandwich4 = sandwiches.get(4);
-        sandwichList.add(sandwich4.getMainName());
-
-        Sandwich sandwich5 = sandwiches.get(5);
-        sandwichList.add(sandwich5.getMainName());
-
-        Sandwich sandwich6 = sandwiches.get(6);
-        sandwichList.add(sandwich6.getMainName());
-
-        Sandwich sandwich7 = sandwiches.get(7);
-        sandwichList.add(sandwich7.getMainName());
-
-        Sandwich sandwich8 = sandwiches.get(8);
-        sandwichList.add(sandwich8.getMainName());
-
-        Sandwich sandwich9 = sandwiches.get(9);
-        sandwichList.add(sandwich9.getMainName());
-
-        ArrayAdapter adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, sandwichList);
-
-        final ListView lv = findViewById(R.id.sandwiches_list);
-
-        lv.setAdapter(adapter);
-
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ListView listView = findViewById(R.id.sandwiches_list);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                intent.putExtra(DetailActivity.EXTRA_POSITION, position);
-                intent.putExtra("Title", lv.getItemAtPosition(position).toString());
-                startActivity(intent);
+                launchDetailActivity(position);
             }
         });
     }
-}
+
+        private void launchDetailActivity(int position) {
+            Intent intent = new Intent(this, DetailActivity.class);
+            intent.putExtra(DetailActivity.EXTRA_POSITION, position);
+            startActivity(intent);
+        }
+
+    }
+
